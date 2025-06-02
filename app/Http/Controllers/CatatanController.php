@@ -34,4 +34,21 @@ class CatatanController extends Controller
         catatan::create($validated);
         return redirect()->route('catatan.index')->with('success', 'Catatan berhasil ditambahkan');
     }
+
+    public function edit($id)
+    {
+        $catatan = catatan::find($id);
+        return view('catatan.edit', compact('catatan'));
+    }
+    public function update(Request $request, $id) {
+        $catatan = $request->validate([
+            'kegiatan' => 'required',
+            'keterangan' => 'required',
+            'jumlah_mainhp' => 'required|integer|min:0',
+        ], [
+            'kegiatan.required' => 'Kegiatan harus diisi',
+        ]);
+        catatan::where('id', $id)->update($catatan);
+        return redirect()->route('catatan.index')->with('success', 'Catatan berhasil diupdate');
+    }
 }
