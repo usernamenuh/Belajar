@@ -13,3 +13,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::resource('catatan', CatatanController::class);
+Route::resource('minuman', App\Http\Controllers\MinumanController::class);

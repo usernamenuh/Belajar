@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\minuman; // Ensure you have the correct namespace for your Minuman model
 
 class MinumanController extends Controller
 {
     public function index()
     {
         // Fetch and return a list of minuman
-        $minumans = \App\Models\Minuman::all();
-        return view('minuman.index', compact('minumans'));
+        $minumen = minuman::all();
+        return view('minuman.index', compact('minumen'));
     }
 
     public function create()
